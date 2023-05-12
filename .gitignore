@@ -1,3 +1,10 @@
-/vendor/
-/node_modules/
 .DS_Store
+Thumbs.db
+wp-cli.local.yml
+*.sql
+*.tar.gz
+*.zip
+
+node_modules
+dist
+vendor

@@ -5,12 +5,12 @@ Disable Blog
 
 [![WP compatibility](https://plugintests.com/plugins/wporg/disable-blog/wp-badge.svg)](https://plugintests.com/plugins/wporg/disable-blog/latest) [![PHP compatibility](https://plugintests.com/plugins/wporg/disable-blog/php-badge.svg)](https://plugintests.com/plugins/wporg/disable-blog/latest)
 
-**Requires at least WordPress:** 5.3  
-**Tested up to WordPress:** 6.4.2  
-**Stable version:** 0.5.4  
+**Requires at least WordPress:** 5.9  
+**Tested up to WordPress:** 6.5.4  
+**Stable version:** 0.5.5  
 **License:** GPLv2 or later  
-**Requires PHP:** 7.4  
-**Tested up to PHP:** 8.2  
+**Requires PHP:** 8.1  
+**Tested up to PHP:** 8.3  
 
 All the power of WordPress, without a blog.
 

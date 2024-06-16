@@ -85,13 +85,29 @@ class Disable_Blog_Functions {
 		 */
 		$allowed_query_vars = apply_filters( 'dwpb_allowed_query_vars', array() );
 		if ( ! empty( $allowed_query_vars ) && is_array( $allowed_query_vars ) ) {
-			$allowed_query_vars = array_filter( $allowed_query_vars, 'esc_html' );
+			$allowed_query_vars = array_filter(
+				$allowed_query_vars,
+				function ( $value ) {
+					return ! empty( esc_html( $value ) );
+				}
+			);
 			$query_vars         = array_intersect_key( $query_vars, array_flip( $allowed_query_vars ) );
 		}
 
 		// Escaping and sanitization are important.
-		$query_vars = array_filter( $query_vars, 'esc_html' );
-		$query_vars = array_filter( $query_vars, 'esc_html', ARRAY_FILTER_USE_KEY );
+		$query_vars = array_filter(
+			$query_vars,
+			function ( $value ) {
+				return ! empty( esc_html( $value ) );
+			}
+		);
+		$query_vars = array_filter(
+			$query_vars,
+			function ( $value ) {
+				return ! empty( esc_html( $value ) );
+			},
+			ARRAY_FILTER_USE_KEY
+		);
 
 		// if we have any query variables, add it to the url.
 		if ( ! empty( $query_vars ) && is_array( $query_vars ) ) {

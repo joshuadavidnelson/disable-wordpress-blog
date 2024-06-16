@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.5.5
+- Tested up to WordPress 6.5.4
+- Bump minimum WordPress version to 5.9, aligning with minimum PHP support.
+- Tested up to PHP 8.3
+- Bump minimum PHP to 8.1, lowest version being maintained.
+
 ## 0.5.4
 - Tested up to WordPress 6.4.2.
 - Bump minimum WordPress version to 5.3, aligning with minimum PHP support.

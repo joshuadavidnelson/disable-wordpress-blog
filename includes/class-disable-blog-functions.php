@@ -87,7 +87,7 @@ class Disable_Blog_Functions {
 		if ( ! empty( $allowed_query_vars ) && is_array( $allowed_query_vars ) ) {
 			$allowed_query_vars = array_filter(
 				$allowed_query_vars,
-				function( $value ) {
+				function ( $value ) {
 					return ! empty( $esc_html( $value ) );
 				}
 			);
@@ -97,13 +97,13 @@ class Disable_Blog_Functions {
 		// Escaping and sanitization are important.
 		$query_vars = array_filter(
 			$allowed_query_vars,
-			function( $value ) {
+			function ( $value ) {
 				return ! empty( $esc_html( $value ) );
 			}
 		);
 		$query_vars = array_filter(
 			$query_vars,
-			function( $value ) {
+			function ( $value ) {
 				return ! empty( $esc_html( $value ) );
 			},
 			ARRAY_FILTER_USE_KEY

@@ -6,6 +6,7 @@
 - Bump minimum PHP to 8.1, lowest version being maintained.
 - Bump minimum WordPress version to 5.9, aligning with minimum PHP support.
 - Add composer support.
+- Upgrade Github actions to `actions/checkout@v4`
 
 ## 0.5.4
 - Tested up to WordPress 6.4.2.

@@ -88,7 +88,8 @@ class Disable_Blog_Functions {
 			$allowed_query_vars = array_filter(
 				$allowed_query_vars,
 				function ( $value ) {
-					return ! empty( esc_html( $value ) );
+					$esc_value = esc_html( $value );
+					return ! empty( $esc_value );
 				}
 			);
 			$query_vars         = array_intersect_key( $query_vars, array_flip( $allowed_query_vars ) );
@@ -98,13 +99,15 @@ class Disable_Blog_Functions {
 		$query_vars = array_filter(
 			$query_vars,
 			function ( $value ) {
-				return ! empty( esc_html( $value ) );
+				$esc_value = esc_html( $value );
+				return ! empty( $esc_value );
 			}
 		);
 		$query_vars = array_filter(
 			$query_vars,
 			function ( $value ) {
-				return ! empty( esc_html( $value ) );
+				$esc_value = esc_html( $value );
+				return ! empty( $esc_value );
 			},
 			ARRAY_FILTER_USE_KEY
 		);
@@ -153,7 +156,7 @@ class Disable_Blog_Functions {
 	 * which is the WP core default for safe redirects.
 	 *
 	 * @since 0.5.0
-	 * @param string $url    the fallback url.
+	 * @param string $url the fallback url.
 	 * @return string
 	 */
 	public function wp_safe_redirect_fallback( $url ) {

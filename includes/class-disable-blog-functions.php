@@ -84,7 +84,7 @@ class Disable_Blog_Functions {
 		 * @return array
 		 */
 		$allowed_query_vars = (array) apply_filters( 'dwpb_allowed_query_vars', array() );
-		if ( ! empty( $allowed_query_vars ) && is_array( $allowed_query_vars ) ) {
+		if ( ! empty( $allowed_query_vars ) ) {
 			$allowed_query_vars = array_filter(
 				$allowed_query_vars,
 				function ( $value ) {

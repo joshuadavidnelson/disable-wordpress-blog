@@ -53,7 +53,6 @@ class Disable_Blog_Admin {
 	 * @param string $version     The version of this plugin.
 	 */
 	public function __construct( $plugin_name, $version ) {
-
 		$this->plugin_name = $plugin_name;
 		$this->version     = $version;
 		$this->functions   = new Disable_Blog_Functions();
@@ -93,6 +92,7 @@ class Disable_Blog_Admin {
 	 * @since 0.4.2
 	 * @since 0.4.9 removed rest api specific filter and updated function
 	 *              for disabling all public-facing aspects of the 'post' post type.
+	 * @return void
 	 */
 	public function modify_post_type_arguments() {
 
@@ -125,7 +125,6 @@ class Disable_Blog_Admin {
 
 			// remove supports.
 			$wp_post_types['post']->supports = array();
-
 		}
 	}
 
@@ -407,7 +406,6 @@ class Disable_Blog_Admin {
 	 * @return bool
 	 */
 	public function redirect_admin_options_discussion() {
-
 		return $this->redirect_admin_edit_comments();
 	}
 
@@ -421,9 +419,7 @@ class Disable_Blog_Admin {
 
 		// Redirect writing options to general options.
 		if ( $this->remove_writing_options() ) {
-
 			return admin_url( 'options-general.php' );
-
 		}
 
 		return false;
@@ -553,7 +549,7 @@ class Disable_Blog_Admin {
 		 *               the redirect url used for this page.
 		 * @param bool $bool Defaults to false, keeping the writing page visible.
 		 */
-		return apply_filters( 'dwpb_remove_options_writing', false );
+		return (bool) apply_filters( 'dwpb_remove_options_writing', false );
 	}
 
 	/**
@@ -703,7 +699,6 @@ class Disable_Blog_Admin {
 	 * @return bool
 	 */
 	public function has_front_page() {
-
 		return 'page' === get_option( 'show_on_front' ) && absint( get_option( 'page_on_front' ) );
 	}
 
@@ -714,7 +709,6 @@ class Disable_Blog_Admin {
 	 * @return void
 	 */
 	public function disable_press_this() {
-
 		wp_die( '"Press This" functionality has been disabled.' );
 	}
 
@@ -794,7 +788,6 @@ class Disable_Blog_Admin {
 	 * @return void
 	 */
 	public function enqueue_styles() {
-
 		wp_enqueue_style( $this->plugin_name, plugin_dir_url( __FILE__ ) . '../assets/css/disable-blog-admin.css', array(), $this->version, 'all' );
 	}
 
@@ -828,9 +821,7 @@ class Disable_Blog_Admin {
 	 * @return bool
 	 */
 	public function is_admin_page( $page ) {
-
 		global $pagenow;
-
 		return is_admin() && isset( $pagenow ) && is_string( $pagenow ) && $page . '.php' === $pagenow;
 	}
 
@@ -1001,7 +992,6 @@ class Disable_Blog_Admin {
 	 * @return array
 	 */
 	public function filter_existing_comments( $comments, $post_id ) {
-
 		return ( 'post' === get_post_type( $post_id ) ) ? array() : $comments;
 	}
 

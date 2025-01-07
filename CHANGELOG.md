@@ -5,7 +5,7 @@
 - Tested up to PHP 8.3
 - Bump minimum PHP to 8.1, lowest version being maintained.
 - Bump minimum WordPress version to 5.9, aligning with minimum PHP support.
-- Added `composer.json`
+- Add composer support.
 
 ## 0.5.4
 - Tested up to WordPress 6.4.2.

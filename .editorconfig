@@ -22,7 +22,7 @@ indent_size = 2
 trim_trailing_whitespace = false
 
 [*.{txt,php}]
-end_of_line = crlf
+end_of_line = lf
 
 [*.neon.dist]
 indent_style = space

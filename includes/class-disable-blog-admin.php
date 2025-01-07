@@ -1023,7 +1023,7 @@ class Disable_Blog_Admin {
 	 */
 	public function site_status_tests( $tests ) {
 
-		if ( isset( $tests['direct']['rest_availability'] ) && is_callable( array( $this, 'get_test_rest_availability' ) ) ) {
+		if ( isset( $tests['direct']['rest_availability'] ) ) {
 			$tests['direct']['rest_availability']['test'] = array( $this, 'get_test_rest_availability' );
 		}
 

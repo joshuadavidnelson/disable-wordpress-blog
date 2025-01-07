@@ -456,7 +456,7 @@ class Disable_Blog_Public {
 		 * @param array $methods_to_remove an array of all the XMLRPC methods to disable.
 		 * @return array|bool
 		 */
-		$methods_to_remove = apply_filters( 'dwpb_disabled_xmlrpc_methods', $methods_to_remove );
+		$methods_to_remove = (array) apply_filters( 'dwpb_disabled_xmlrpc_methods', $methods_to_remove );
 
 		// filter any invalid entries out before returning the array.
 		return is_array( $methods_to_remove ) ? array_filter( $methods_to_remove, 'is_string' ) : false; // phpcs:ignore

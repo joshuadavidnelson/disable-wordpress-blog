@@ -3,6 +3,7 @@ includes:
 parameters:
     level: 5
     inferPrivatePropertyTypeFromConstructor: true
+	treatPhpDocTypesAsCertain: false
     scanFiles:
         - tests/bootstrap.php
         - includes/functions.php

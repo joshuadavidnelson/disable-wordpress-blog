@@ -83,7 +83,7 @@ class Disable_Blog_Functions {
 		 * @param array $allowed_query_vars an array of the allowed query variable keys.
 		 * @return array
 		 */
-		$allowed_query_vars = apply_filters( 'dwpb_allowed_query_vars', array() );
+		$allowed_query_vars = (array) apply_filters( 'dwpb_allowed_query_vars', array() );
 		if ( ! empty( $allowed_query_vars ) && is_array( $allowed_query_vars ) ) {
 			$allowed_query_vars = array_filter(
 				$allowed_query_vars,
@@ -113,7 +113,7 @@ class Disable_Blog_Functions {
 		);
 
 		// if we have any query variables, add it to the url.
-		if ( ! empty( $query_vars ) && is_array( $query_vars ) ) {
+		if ( ! empty( $query_vars ) ) {
 			$url = add_query_arg( $query_vars, $url );
 		}
 

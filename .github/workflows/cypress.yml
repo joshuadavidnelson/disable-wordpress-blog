@@ -25,7 +25,7 @@ jobs:
           - {name: 'WP 5.9', version: 'WordPress/WordPress#5.9'}
           - {name: 'WP trunk', version: 'WordPress/WordPress#master'}
         include:
-          - php: {name: 'PHP 7.1', version: '7.1'}
+          - php: {name: 'PHP 8.1', version: '8.1'}
             core: {name: 'WP 5.9', version: 'WordPress/WordPress#5.9'}
           - php: {name: 'PHP 8.3', version: '8.3'}
             core: {name: 'WP stable', version: 'latest'}

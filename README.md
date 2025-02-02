@@ -124,3 +124,24 @@ The `develop` branch is the most current working branch. _Please direct all pull
 This repo contains the files needed to boot up a local development environment using [wp-env](https://developer.wordpress.org/block-editor/reference-guides/packages/packages-env/).
 
 Run `npm install` and the `npm run env:start` to boot up a local environment. 
+
+### Running Tests
+
+End to end testing is setup to run with Cypress (see more documentation [here](https://docs.cypress.io/) and [here](https://deliciousbrains.com/cypress-testing/)). 
+
+The intent with these tests is to show that Disable Blog works with common WordPress core user experiences as expected. 
+
+If you're contributing new functionality to the plugin, please write tests! If you're altering functionality, please make sure existing tests continue to work or update and explain why the change was needed in your pull request.
+
+To setup Cypress from the root directory of the plugin:
+1. Run `npm install` to install Cypress and other dependencies.
+2. Run `npm run cypress:open` to open Cypress.
+
+### Unit Tests
+
+Unit tests are run on `phpunit`. You'll need `composer` to install the required packages.
+
+1. Run `composer install`
+2. Run `./vendor/bin/phpunit` to run tests.
+
+All tests should go into the `tests/php/` subfolder, be named as a class extending `TestCase` with the filename 

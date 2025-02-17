@@ -76,6 +76,31 @@ class Disable_Blog_Functions {
 		$query_vars = array();
 		wp_parse_str( $_SERVER['QUERY_STRING'], $query_vars ); // phpcs:ignore
 
+		// Only allow specific query vars.
+		$allowed_query_vars = $this->get_allowed_query_vars();
+		if ( ! empty( $allowed_query_vars ) ) {
+			$query_vars = array_intersect_key( $query_vars, array_flip( $allowed_query_vars ) );
+
+			// Escaping and sanitization are important.
+			$query_vars = array_filter( array_map( 'esc_html', $query_vars ) );
+
+			// if we have any query variables, add it to the url.
+			if ( ! empty( $query_vars ) ) {
+				$url = add_query_arg( $query_vars, $url );
+			}
+		}
+
+		return $url;
+	}
+
+	/**
+	 * Get the allowed query vars.
+	 *
+	 * @since 0.5.5
+	 * @return array
+	 */
+	private function get_allowed_query_vars() {
+
 		/**
 		 * Filter for allowed queary string variables.
 		 *
@@ -83,22 +108,10 @@ class Disable_Blog_Functions {
 		 * @param array $allowed_query_vars an array of the allowed query variable keys.
 		 * @return array
 		 */
-		$allowed_query_vars = apply_filters( 'dwpb_allowed_query_vars', array() );
-		if ( ! empty( $allowed_query_vars ) && is_array( $allowed_query_vars ) ) {
-			$allowed_query_vars = array_filter( $allowed_query_vars, 'esc_html' );
-			$query_vars         = array_intersect_key( $query_vars, array_flip( $allowed_query_vars ) );
-		}
+		$allowed_query_vars = (array) apply_filters( 'dwpb_allowed_query_vars', array() );
 
-		// Escaping and sanitization are important.
-		$query_vars = array_filter( $query_vars, 'esc_html' );
-		$query_vars = array_filter( $query_vars, 'esc_html', ARRAY_FILTER_USE_KEY );
-
-		// if we have any query variables, add it to the url.
-		if ( ! empty( $query_vars ) && is_array( $query_vars ) ) {
-			$url = add_query_arg( $query_vars, $url );
-		}
-
-		return $url;
+		// Escaping and sanitization are important, insure we have only valid query vars.
+		return array_filter( array_map( 'esc_html', $allowed_query_vars ) );
 	}
 
 	/**
@@ -137,7 +150,7 @@ class Disable_Blog_Functions {
 	 * which is the WP core default for safe redirects.
 	 *
 	 * @since 0.5.0
-	 * @param string $url    the fallback url.
+	 * @param string $url the fallback url.
 	 * @return string
 	 */
 	public function wp_safe_redirect_fallback( $url ) {
